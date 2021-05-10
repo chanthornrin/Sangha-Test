@@ -10,6 +10,17 @@ class FruitingRoomController extends SimpleGenericRestfulController<FruitingRoom
     FruitingRoomController() {
         super(FruitingRoom)
     }
+    def fruitingRoomService
+    @Override
+    def index(PaginationCommand paginationCommand){
+        String code=params.code
+        String name=params.name
+        String isDelete=params.isDelete
+        Long investorId=params.investorId as Long
+        def result=fruitingRoomService.getAllFruitingRoom(code,name,investorId,isDelete,paginationCommand)
+        render JSONFormat.respond(result) as JSON
+    }
+
 
     @Override
     def save() {
@@ -33,12 +44,12 @@ class FruitingRoomController extends SimpleGenericRestfulController<FruitingRoom
         }
         fruitingRoom.addToInvestors(investor)
         fruitingRoom.validate()
-        if(fruitingRoom.hasErrors()){
-            render JSONFormat.respond(null,StatusCode.Invalid,getError(fruitingRoom)) as JSON
+        if (fruitingRoom.hasErrors()) {
+            render JSONFormat.respond(null, StatusCode.Invalid, getError(fruitingRoom)) as JSON
             return
         }
 
-        
+
         fruitingRoom.save(flush: true)
         render JSONFormat.respond(fruitingRoom, StatusCode.OK, "success") as JSON
 
