@@ -23,4 +23,18 @@ class FruitingRoomService {
         }
 
     }
+    def removeFruitingRoom(def investor) {
+        def fruitingRoom = FruitingRoom.findAllByIsDelete(false)
+        if (!fruitingRoom) {
+            return null
+        }
+        fruitingRoom.investors.find{
+            if(it == investor){
+                fruitingRoom.isDelete=true
+                fruitingRoom.save(flush:true)
+            }
+        }
+    }
+
+
 }

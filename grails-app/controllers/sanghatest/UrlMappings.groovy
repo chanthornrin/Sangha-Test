@@ -40,5 +40,20 @@ class UrlMappings {
         "/api/fruitingRoom"(resources: "FruitingRoom")
         "/api/assignFruitingRoomBelongToInvestor"(controller: "FruitingRoom",action: "assignFruitingRoomBelongToInvestor")
         "/api/listAllFruitingRoomCode"(controller: "FruitingRoom",action: "listAllFruitingRoomCode")
+
+        //Item
+        "/api/item"(resources: "Item")
+        "/api/getAllMushRoomType"(controller:"item",action: "getAllMushroomType")
+
+        //Uom
+        "/api/uom"(resources: "Uom")
+
+        //MushroomDistribution
+        "/api/mushroomDistribution"(resources: "MushroomDistribution")
+
+        //MushroomCollection
+        "/api/mushroomCollection"(resources: "MushroomCollection")
+
+
     }
 }

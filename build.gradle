@@ -63,6 +63,12 @@ dependencies {
     runtime "mysql:mysql-connector-java:8.0.16"
     compile "com.ecoinsoft:core-backend:$coreBackEndVersion"
     compile 'org.grails.plugins:quartz:2.0.13'
+
+    compile 'corebackend.simplegenericrestfulmongo:SimpleGenericRestfulMongo:0.1'
+    compile "org.mongodb:mongodb-driver:3.5.0"
+    compile "org.grails.plugins:mongodb"
+    runtime 'com.googlecode.json-simple:json-simple:1.1'
+
 }
 
 bootRun {

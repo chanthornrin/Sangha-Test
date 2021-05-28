@@ -119,3 +119,16 @@ environments:
             redis:
                 host: "172.30.30.23"
                 password: P@ssw0rd
+---
+environments:
+    development:
+        grails:
+            mongodb:
+                host: 127.0.0.1
+                port: 27017
+                databaseName: "mydb"
+
+---
+grails:
+    cors:
+        enabled: true

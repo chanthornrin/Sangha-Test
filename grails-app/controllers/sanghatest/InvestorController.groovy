@@ -12,6 +12,9 @@ class InvestorController extends SimpleGenericRestfulController<Investor> {
         super(Investor)
     }
     def investorService
+    def mushroomCollectionService
+    def fruitingRoomService
+
     @Override
     def index(PaginationCommand paginationCommand) {
         String code = params.code
@@ -28,7 +31,7 @@ class InvestorController extends SimpleGenericRestfulController<Investor> {
         if (code) {
             return JSONFormat.respond(null, StatusCode.RecordNotFound, "code used already")
         }
-        def result=investorService.validateInvestor(investor)
+        def result = investorService.validateInvestor(investor)
         return result
     }
 
@@ -47,6 +50,9 @@ class InvestorController extends SimpleGenericRestfulController<Investor> {
         }
         investor.isDelete = true
         investor.save(flush: true)
+       //mushroomCollectionService.removeMushroomCollection(investor.id)
+        fruitingRoomService.removeFruitingRoom(investor)
         render JSONFormat.respond(investor, StatusCode.OK, "success") as JSON
+
     }
 }
